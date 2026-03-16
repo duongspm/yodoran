@@ -9,15 +9,394 @@ display: flex; justify-content: space-between; align-items: center; padding: 10p
 .menu li{margin-left: 20px;}
 .menu a.is-active{color: red;}
 
-#pagetop{width: 60px; height: 60px; line-height: 1; background: red; color: #fff; text-align: center; padding: 15px 0 0 0; border-radius: 100%; position: fixed; bottom: 10px; right: 10px; z-index: 100; cursor: pointer; opacity: 0; pointer-events: none; transition: .4s;}
-#pagetop.is-show{opacity: 1; pointer-events: auto;}
+.anni{
+    padding-top: 6.3rem;
+    background: #EA9C28;
+    position: relative;
+}
+.anni::after{
+    position: absolute;
+    content: "";
+    height: 14.8rem;
+    background: #fff;
+    opacity: 0.25;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* z-index: -1; */
+}
+.anni-outer{
+    width: 1186px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.anni-text{
+    position: absolute;
+    top: 18%;
+    font-size: 6rem;
+    text-transform: uppercase;
+    font-family: var(--font-secondary);
+    opacity: 0.25;
+    -ms-writing-mode: tb-lr;
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+}
+.anni-text.anni-text--left{
+    transform: rotate(180deg);
+    left: 8vw;
+}
+.anni-text.anni-text--right{
+    right: 8vw;
+}
+.anni-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+.anni-bottom img:nth-child(2){
+    transform: translateY(40px);
+    animation: backToTop 5s ease-in-out infinite alternate;
+}
+
+@keyframes backToTop {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.heading{
+    font-family: var(--font-secondary);
+    font-size: 4.4rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    padding: 25px 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    font-weight: normal;
+    letter-spacing: 10%;
+}
+.heading--second::before ,
+.heading::after {
+    content: "";
+    position: absolute;
+    height: 5px;             
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 364px;
+}
+.heading--second::before {
+    top: 0;                
+}
+
+/* Tạo 2 đường kẻ phía dưới */
+.heading::after {
+    bottom: 0;         
+}
+.heading--white{
+    color: #ffffff;
+}
+.heading--second::before ,
+.heading.heading--second::after{
+    width: 12em;
+}
+.desc{
+    font-size: 1.8rem;
+    /* font-weight: 500; */
+    text-align: center;
+    margin: 3rem 0;
+    line-height: 1.875;
+    letter-spacing: 15%;
+}
+.cap{
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+.anni-year{
+    margin: 4.4rem auto 5.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.anni-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+.new{
+    background: var(--color-primary);
+    padding-top: min(10vw, 10rem);
+}
+.heading{
+    /* width: 364px; */
+}
+.heading--white{
+
+}
+.heading--second{
+
+}
+.new-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.desc{
+
+}
+.new-bottom{
+    margin-top: min(14vw, 14.3rem);
+}
+.new-slide{
+    background: #EA9C28;
+    padding: 1.7rem 0;
+}
+
+.new-slide-item{
+    display: flex !important; 
+    justify-content: center;
+    align-items: center;
+    height: 85px;
+    margin: 0 8px;
+}
+.new-slide-item--txt{
+    opacity: .8;
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-family: var(--font-secondary);
+    letter-spacing: 10%;
+    line-height: 1;
+}
+.movie{
+    padding: min(10vw, 10rem) 0 min(12vw, 12rem);
+}
+.heading--red{
+    color: var(--color-primary);
+}
+.heading--red::after{
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+}
+.movie-list{
+    margin-top: min(6vw, 6rem);
+}
+.movie-item:not(:last-child){
+    margin-bottom: min(9vw, 9rem);
+}
+.movie-video{
+
+}
+.movie-btn{
+    margin: 46px auto 0;
+    width: 360px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    background: var(--color-primary);
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 10%;
+    transition: all .2s linear;
+    /* border: 2px solid var(--color-primary); */
+}
+.movie-btn:hover{
+    background: #EA9C28;
+}
+
+.profile{
+    background: var(--color-primary);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: min(8vw, 8.1rem) 0 0 min(17vw, 17rem);
+    margin-bottom: min(10vw, 10.5rem);
+}
+.profile-inner{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-content{
+    width: 50%;
+    max-width: 465px;
+    padding-bottom: min(9vw, 9rem);
+}
+
+.heading{
+
+}
+.heading--sm{
+    width: 100%;
+    font-size: 3.4rem;
+    padding: 15px 0;
+    text-align: left;
+}
+.heading--sm::after{
+    left: 0;
+    transform: unset;
+    width: 100%;
+}
+.profile-title{
+    font-size: 2.6rem;
+    margin: min(5vw, 4rem) 0 1rem;
+    font-weight: 600;
+    font-family: "Noto Serif JP", serif;
+}
+.profile-desc{
+    font-size: 1.4rem;
+    line-height: 2.57;
+}
+.profile-img{   
+    width: 46.116%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}   
+.profile-img img{
+    display: inline-block;
+    /* Đặt tâm xoay ở dưới cùng để giống như đang đứng lắc lư */
+    transform-origin: bottom center; 
+    animation: swingAction 3s ease-in-out infinite;
+}
+@keyframes swingAction {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); } /* Lắc sang phải */
+    75% { transform: rotate(-2deg); } /* Lắc sang trái */
+}
+.profile-img:hover {
+    animation: wobbleAction 0.8s both;
+}
+
+@keyframes wobbleAction {
+    0% { transform: translateX(0%); }
+    15% { transform: translateX(-5%) rotate(-2deg); }
+    30% { transform: translateX(3%) rotate(1deg); }
+    45% { transform: translateX(-3%) rotate(-1deg); }
+    60% { transform: translateX(2%) rotate(1deg); }
+    75% { transform: translateX(-1%) rotate(-1deg); }
+    100% { transform: translateX(0%); }
+}
+@keyframes floatAndSwing {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+.profile-img {
+    animation: floatAndSwing 4s ease-in-out infinite;
+}
+
+.history-img{
+    margin-top: min(6vw, 6.4rem);
+}
 
 @media screen and (min-width: 769px){
 	
 }
 
 @media screen and (max-width: 768px){
-	
+	.anni{
+        padding-top: 4rem;
+    }
+    .heading{
+        font-size: 2.8rem;
+        padding: 20px 5px 15px;
+    }
+    .desc{
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+    }
+    .anni::after{
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+    .heading::after {
+        width: 237px;
+    }
+    .new-img img{
+        width: 216px;
+    }
+    .new-slide-item--txt{
+        font-size: 3rem;
+    }
+    .new-slide-item{
+        height: 50px;
+    }
+    .new-slide-item img{
+        height: 50px;
+        width: 146px;
+        object-fit: contain;
+    }
+    .movie-btn{
+        width: 230px;
+        height: 34px;
+        font-size: 1.6rem;
+        margin-top: 26px;
+    }
+    .movie-item:not(:last-child) {
+        margin-bottom: 52px;
+    }
+    .profile{
+        margin: 0 -20px 30px -20px;
+        overflow: hidden;
+        padding: 40px 20px 0 20px;
+    }
+    .heading--sm{
+        text-align: center;
+    }
+    .heading--sm::after{
+        width: 100%;
+    }
+    .profile-inner{
+        flex-direction: column;
+    }
+    .profile-content{
+        width: 100%;
+    }
+    .profile-img{
+        width: 100%;
+        position: unset;
+        /* animation: none; */
+        margin-right: -40px;
+    }
+    .profile-img img{
+        /* animation: none; */
+
+    }
+    .history-img{
+        margin-top: 3.8rem;
+    }
+    .anni-text.anni-text--left{
+        left: -20px;
+    }
+    .anni-text.anni-text--right{
+        right: -20px;
+    }
+    .anni{
+        overflow: hidden;
+    }
 }
 
 @media screen and (max-width: 1200px){

@@ -94,7 +94,7 @@ function initializeAnchorLinks() {
 ------------------------------ */
 function initializeMenuActive() {
     const currentPath = window.location.pathname;
-    const menuLinks = document.querySelectorAll('.menu a');
+    const menuLinks = document.querySelectorAll('.menu-list a');
 
     if (menuLinks.length === 0) return;
 
@@ -109,7 +109,28 @@ function initializeMenuActive() {
         }
     });
 }
+/* ------------------------------
+    Menusp
+------------------------------ */
+function initializeMenusp() {
+    const menu = document.getElementById('mobile-menu');
+    const nav = document.getElementById('menu-wrap');
 
+    menu.addEventListener('click', () => {
+        // Đổi trạng thái nút (3 gạch <-> X)
+        menu.classList.toggle('is-open');
+        // Mở/Đóng menu
+        nav.classList.toggle('is-open');
+    });
+
+    // Tự động đóng menu khi nhấp vào một liên kết
+    document.querySelectorAll('.menu-wrap a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('is-open');
+            nav.classList.remove('is-open');
+        });
+    });
+}
 /* ------------------------------
     Component Initializer
 ------------------------------ */
@@ -118,6 +139,7 @@ function initializeComponents() {
     initializePageTop();
     initializeAnchorLinks();
     initializeMenuActive();
+    initializeMenusp();
 }
 
 /* ------------------------------
@@ -157,3 +179,4 @@ document.addEventListener("DOMContentLoaded", function() {
         initializeComponents();
     }
 });
+

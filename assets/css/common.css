@@ -1,5 +1,22 @@
 @charset "utf-8";
+:root {
+    --font-primary: "Noto Sans JP", sans-serif;
+    --font-secondary: "Tai Heritage Pro", serif;
+    --color-primary: #B60024;
+}
 /* Common */
+.container-1024 {
+    max-width: 1024px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+.container-1200 {
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
 .container{max-width: 1200px; width: calc(100% - 40px); margin: 0 auto;}
 .txt-link{color: #f00; text-decoration: underline; text-underline-offset: 0.2em;}
 .txt-link:hover{text-decoration: none;}
@@ -18,13 +35,256 @@
 
 
 /* Header */
+/* 1. Thiết lập chung cho Menu Wrap */
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #887575;
+    /* Màu nâu tím như trong hình */
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
+    /* Hiệu ứng ẩn mặc định */
+    opacity: 0;
+    visibility: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: all 0.4s ease-in-out;
+}
+
+/* 2. Khi Menu được mở */
+.menu-wrap.is-open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. Nội dung bên trong */
+.menu-inner {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.menu-logo {
+    margin-bottom: 4.5rem;
+}
+
+.menu-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4rem 0;
+}
+
+.menu-list ul li {
+    margin: 2rem 0;
+
+}
+
+.menu-link {
+    /* display: block; */
+    font-size: 3rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s linear;
+    font-family: var(--font-secondary);
+    position: relative;
+    font-weight: 400;
+}
+
+.menu-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    bottom: 10px;
+    left: 50%;
+    background: linear-gradient(to right, #FFF9BA, #EBD679);
+    transition: all 0.3s linear;
+}
+
+.menu-link:hover::after {
+    width: 100%;
+}
+
+.menu-link.is-active::after {
+    width: 100%;
+}
+
+/* 4. Social Icons */
+.social-list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 4.5rem;
+}
+
+.social-list li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.social-list img {
+    filter: brightness(0) invert(1);
+    /* Chuyển icon sang màu trắng nếu là file màu gốc */
+    height: auto;
+}
+
+.social-icon {
+    transition: all .3s linear;
+}
+
+.social-icon:hover {
+    opacity: .6;
+    transform: rotate(10deg);
+}
+
+/* Container chứa nút */
+.menu-icon {
+    position: fixed;
+    top: 0;
+    /* Khoảng cách từ trên xuống */
+    right: 0;
+    /* Khoảng cách từ phải sang */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10000;
+    /* Đảm bảo luôn nằm trên cùng */
+
+    width: 70px;
+    height: 60px;
+    background: #1A1A1A;
+    border-bottom-left-radius: 20px;
+}
+
+.menu-icon:hover {
+    opacity: .8;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 3 thanh gạch ngang của Hamburger */
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    /* Thanh mảnh như trong hình */
+    background-color: #fff;
+    /* Màu mặc định khi đóng (thường là đen/xám) */
+    margin: 3px 0;
+    /* Khoảng cách giữa các thanh */
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- KHI MENU MỞ (Class .is-open) --- */
+
+/* Đổi màu thanh gạch sang TRẮNG để nổi bật trên nền nâu */
+.menu-icon.is-open span {
+    margin: 0;
+    /* Thu hẹp khoảng cách để xoay chuẩn tâm */
+}
+
+/* Xoay thanh 1 thành đường chéo \ */
+.menu-icon.is-open span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+/* Ẩn thanh ở giữa */
+.menu-icon.is-open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+/* Xoay thanh 3 thành đường chéo / */
+.menu-icon.is-open span:nth-child(3) {
+    transform: rotate(-45deg) translate(2px, -3px);
+}
+
+.header-wrap {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px 0 20px 120px;
+    z-index: 99;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-wrap.blend-mode {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+}
+
+.header-wrap.blend-mode .header-logo img {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+        opacity: 0.8;
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
+        opacity: 1;
+    }
+}
 @media screen and (min-width: 769px){
 	
 }
 
 @media screen and (max-width: 768px){
-	
+	.menu-link {
+        font-size: 2rem;
+    }
+
+    .menu-logo img {
+        width: 206px;
+    }
+
+    .menu-inner {
+        padding: 40px 20px;
+    }
+
+    .social-list li img {
+        width: 35px;
+    }
+
+    .menu-social-logo img {
+        width: 67px;
+    }
+
+    .menu-icon {
+        width: 50px;
+        height: 45px;
+    }
+
+    .menu-icon span {
+        width: 16px;
+    }
+
+    .header-wrap {
+        padding: 10px 0 20px 25px;
+    }
 }
 
 @media screen and (max-width: 1200px){
@@ -52,15 +312,100 @@
 @media screen and (max-width: 480px){
 	
 }
+.scrollTop {
+    position: fixed;
+    bottom: 23px;
+    right: 23px;
+    cursor: pointer;
+    /* overflow: hidden; Quan trọng: để ẩn icon khi nó bay ra ngoài phạm vi nút */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* Hiện nút khi có class .on (từ JS của bạn) */
+.scrollTop.is-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Wrapper của icon */
+.icon-wrap {
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* HIỆU ỨNG HOVER */
+.scrollTop:hover .icon-wrap {
+    animation: backToTop 1s ease-in-out infinite alternate;
+}
+
+@keyframes backToTop {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
 /* Footer */
+.footer-wrap {
+    margin-top: min(6vw, 6.4rem);
+    background: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.5rem 20px 5rem;
+}
 
+.footer-logo {}
+
+.footer-logo-txt {
+    margin: 1.4rem 0 3.7rem;
+}
+
+.footer-copyright {
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+.footer-social .social-icon {
+    filter: invert(29%) sepia(93%) saturate(5436%) hue-rotate(371deg) brightness(88%) contrast(117%);
+}
 @media screen and (min-width: 769px){
 	
 }
 
 @media screen and (max-width: 768px){
-	
+	.footer-container{
+        margin-top: 47px;
+    }
+    .footer-wrap{
+        margin-top: 44px;
+    }
+    .footer-logo img{
+        width: 179px;
+    }
+    .footer-logo-txt img{
+        width: 95px;
+    }
+    .footer-copyright{
+        font-size: 1rem;
+    }
+    .scrollTop{
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 @media screen and (max-width: 1200px){
@@ -82,4 +427,111 @@
 
     .fade-right{opacity: 0; transform: translateX(-30px); transition: 1.5s;}
     .fade-right.is-view{opacity: 1; transform: translateX(0);}
+    /* Animate */
+    .fade-in {
+        opacity: 0;
+        transition: opacity 1.5s ease;
+    }
+    
+    .fade-in.is-view {
+        opacity: 1;
+    }
+    
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        -webkit-transform: translateY(40px);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .fade-up.is-view {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    
+    .fade-down {
+        opacity: 0;
+        transform: translateY(-40px);
+        -webkit-transform: translateY(-40px);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .fade-down.is-view {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    
+    .fade-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        -webkit-transform: translateX(-40px);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .fade-left.is-view {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    
+    .fade-right {
+        opacity: 0;
+        transform: translateX(40px);
+        -webkit-transform: translateX(40px);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .fade-right.is-view {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    
+    .zoom-in {
+        opacity: 0;
+        overflow: hidden;
+        transform: scale(0.7, 0.7);
+        -webkit-transform: scale(0.7, 0.7);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .zoom-in.is-view {
+        opacity: 1;
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+    
+    .zoom-out {
+        opacity: 0;
+        overflow: hidden;
+        transform: scale(1.2, 1.2);
+        -webkit-transform: scale(1.2, 1.2);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .zoom-out.is-view {
+        opacity: 1;
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+@media (min-width: 768px) {
+    .delay1 {
+        transition-delay: .4s;
+    }
+
+    .delay2 {
+        transition-delay: .6s;
+    }
+
+    .delay3 {
+        transition-delay: .8s;
+    }
+
+    .delay4 {
+        transition-delay: 1s;
+    }
 }

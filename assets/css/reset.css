@@ -3,7 +3,8 @@
 
 /* Reset */
 html{font-size: 62.5%;}
-body{color: #000; word-spacing: 0; font-size: 1.6rem; line-height: 1.7; overflow-x: hidden;
+body{font-family: var(--font-primary);
+    color: #fff;word-spacing: 0; font-size: 1.6rem; line-height: 1.7; overflow-x: hidden;
 -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -moz-text-size-adjust: 100%;}
 
 *{margin: 0; padding: 0; box-sizing: border-box; border: 0;}
