@@ -1,0 +1,69 @@
+.face-container {
+    display: flex;
+    gap: 40px; /* Khoảng cách giữa 2 mắt */
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background: #f0f0f0;
+}
+
+.eye {
+    position: relative;
+    width: 100px;
+    height: 65px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Con ngươi */
+.iris {
+    width: 35px;
+    height: 35px;
+    background: #333;
+    border-radius: 50%;
+}
+
+/* Mí mắt */
+.eyelid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e0ac69; /* Màu da */
+    transform-origin: top;
+    transform: scaleY(0);
+    animation: blink-animation 4s infinite;
+}
+
+/* Mắt phải chớp trễ hơn mắt trái 0.15s để tự nhiên hơn */
+.eye--right .eyelid {
+    animation-delay: 0.15s;
+}
+
+/* Hiệu ứng nhắm mở */
+@keyframes blink-animation {
+    0%, 95%, 100% {
+        transform: scaleY(0); /* Mở mắt */
+    }
+    97.5% {
+        transform: scaleY(1); /* Nhắm mắt */
+    }
+}
+
+/* Hiệu ứng khi di chuột vào: Cả 2 mắt đều nhắm lại */
+.face-container:hover .eyelid {
+    animation: none;
+    transform: scaleY(1);
+    transition: transform 0.1s ease-in;
+}
+@keyframes look-around {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+.iris { animation: look-around 6s infinite ease-in-out; }

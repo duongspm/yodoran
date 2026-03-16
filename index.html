@@ -40,6 +40,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&family=Tai+Heritage+Pro:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Css -->
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css"/>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/top.css">
@@ -59,14 +63,16 @@
     <main>
         <div class="mv">
             <div class="mv-wrapper">
-                <div class="mv-slide">
-                    <div class="mv-slide-item">
-                        <img class="only-pc" src="assets/img/mv-img01.jpg" width="100%" alt="mv">
-                        <img class="only-sp" src="assets/img/mv-img02-sp.jpg" width="100%" alt="mv">
-                    </div>
-                    <div class="mv-slide-item">
-                        <img class="only-pc" src="assets/img/mv-img02.jpg" width="100%" alt="mv">
-                        <img class="only-sp" src="assets/img/mv-img02-sp.jpg" width="100%" alt="mv">
+                <div class="mv-slide mvSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="mv-slide-item swiper-slide">
+                            <img class="only-pc" src="assets/img/mv-img01.jpg" width="100%" alt="mv">
+                            <img class="only-sp" src="assets/img/mv-img02-sp.jpg" width="100%" alt="mv">
+                        </div>
+                        <div class="mv-slide-item swiper-slide">
+                            <img class="only-pc" src="assets/img/mv-img02.jpg" width="100%" alt="mv">
+                            <img class="only-sp" src="assets/img/mv-img02-sp.jpg" width="100%" alt="mv">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,24 +118,24 @@
                     <br>ぜひ店頭で探してみてください。</p>
             </div>
             <div class="new-bottom">
-                <div class="new-slide inview fade-left">
-                    <div class="new-slide-item">
-                        <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
-                    </div>
-                    <div class="new-slide-item">
-                        <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
-                    </div>
-                    <div class="new-slide-item">
-                        <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
-                    </div>
-                    <div class="new-slide-item">
-                        <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
-                    </div>
-                    <div class="new-slide-item">
-                        <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
-                    </div>
-                    <div class="new-slide-item">
-                        <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
+                <div class="new-slide inview fade-left new-slide-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide new-slide-item">
+                            <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
+                            <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
+                        </div>
+                        <div class="swiper-slide new-slide-item">
+                            <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
+                            <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
+                        </div>
+                        <div class="swiper-slide new-slide-item">
+                            <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
+                            <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
+                        </div>
+                        <div class="swiper-slide new-slide-item">
+                            <img src="assets/img/logo-txt.png" alt="image photo" width="245" height="85" loading="lazy">
+                            <p class="new-slide-item--txt">50TH ANNIVERSARY</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,7 +148,7 @@
                         <div class="movie-video">
                             <img src="assets/img/img-ex.jpg" alt="" width="1024" height="576">
                         </div>
-                        <a href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-width="50%" data-height="50%" data-fancybox data-aspect-ratio="2 / 1" class="movie-btn">「コク3.5 倍」篇</a>
+                        <a href="https://youtu.be/3xmrwRxFglQ" data-width="50%" data-height="50%" data-fancybox data-aspect-ratio="2 / 1" class="movie-btn">「コク3.5 倍」篇</a>
                     </div>
                     <div class="movie-item inview fade-up">
                         <div class="movie-video">
@@ -181,7 +187,11 @@
     <!-- End Footer -->
 	
     <!-- Js -->	
-    <script src="assets/js/common.js"></script>
-    
+    <!-- Swiper JS -->
+    <script src="assets/js/common.js" defer></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+    <script src="assets/js/top.js" defer></script>
+    <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
+
 </body>
 </html>

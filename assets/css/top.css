@@ -1,8 +1,7 @@
 @charset "utf-8";
 /* Top */
 html{scroll-padding-top: 85px;}
-header{position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: #fff;
-display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;}
+/* header{position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: #fff;} */
 .main{padding-top: 85px;}
 
 .menu{display: flex;}
@@ -179,7 +178,9 @@ display: flex; justify-content: space-between; align-items: center; padding: 10p
     justify-content: center;
     align-items: center;
     height: 85px;
-    margin: 0 8px;
+    /* margin: 0 8px; */
+    gap: 20px;
+    width: 835px;
 }
 .new-slide-item--txt{
     opacity: .8;
@@ -189,6 +190,18 @@ display: flex; justify-content: space-between; align-items: center; padding: 10p
     letter-spacing: 10%;
     line-height: 1;
 }
+/* Quan trọng nhất: Ép chuyển động tuyến tính không nghỉ */
+.new-slide-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+    will-change: transform;
+}
+.new-slide-swiper {
+    position: relative;
+    /* mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.486) 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.486) 15%, black 85%, transparent); */
+    pointer-events: none; /* Chặn chuột như bạn yêu cầu */
+}
+
 .movie{
     padding: min(10vw, 10rem) 0 min(12vw, 12rem);
 }
@@ -343,6 +356,7 @@ display: flex; justify-content: space-between; align-items: center; padding: 10p
     }
     .new-slide-item{
         height: 50px;
+        width: 510px;
     }
     .new-slide-item img{
         height: 50px;
