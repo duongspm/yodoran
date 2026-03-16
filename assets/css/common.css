@@ -357,6 +357,9 @@
     }
 }
 /* Footer */
+.footer{
+    margin-top: clamp(2rem, 0.599rem + 7vw, 9rem);
+}
 .footer-wrap {
     margin-top: min(6vw, 6.4rem);
     background: var(--color-primary);
